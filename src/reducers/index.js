@@ -1,46 +1,35 @@
 import { combineReducers } from "redux"
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
+
+const persistConfig = {
+	key: "root",
+	storage,
+};
+
 
 const initialWalletState = {
     user: {
         userAddress : "",
         userBalance : 0,
     },
-    tezos: {
-        tezosToolkit: null,
-    },
-    beacon: {
-        beaconConnection: false,
-        publicToken: null,
-        wallet: null
-    }
 }
-
 
 const connectWalletReducer = (config = initialWalletState, action) => {
     switch(action.type){
         case "CONNECT_WALLET":
             return {...config,user: action.user, 
-                        tezos: action.tezos, 
-                        beacon: action.beacon};
+                        };
         case "DISCONNECT_WALLET":
+            storage.removeItem('persist:root')
             return {...initialWalletState,
-                        tezos: action.tezos
                     };
         case "TEZOS_INSTANCE":
-            return {...config, tezos: action.tezos}
+            return {...config}
         case "CONNECT_WALLET_ERROR":
             return config;
         default:
             return config;
-    }
-}
-
-const contractInstanceReducer = (state={hasData:false, contract:null}, action) => {
-    switch(action.type){
-        case "CREATE_CONTRACT_INSTANCE":
-            return action.payload;
-        default:
-            return state;
     }
 }
 
@@ -53,4 +42,6 @@ const contractStorageReducer = (state=0, action) => {
     }
 }
 
-export default combineReducers({walletConfig: connectWalletReducer, contractStorage: contractStorageReducer, contractInstance: contractInstanceReducer});
+const reducers = combineReducers({walletConfig: connectWalletReducer, contractStorage: contractStorageReducer});
+const persistedReducer = persistReducer(persistConfig, reducers);
+export default persistedReducer;
