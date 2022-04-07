@@ -17,8 +17,8 @@ export const connectWallet = ({wallet, Tezos}) => {
             if(!activeAccount){
                 await wallet.requestPermissions({
                 network: {
-                    type: NetworkType.FLORENCENET,
-                    rpcUrl: "https://florencenet.smartpy.io/"
+                    type: NetworkType.HANGZHOUNET,
+                    rpcUrl: "https://hangzhounet.smartpy.io/"
                 }
                 });
             }
@@ -50,7 +50,7 @@ export const _walletConfig = (user) => {
 export const disconnectWallet = ({wallet, setTezos}) => {
     return async (dispatch) => {
 
-        setTezos(new TezosToolkit("https://florencenet.smartpy.io/"));
+        setTezos(new TezosToolkit("https://hangzhounet.smartpy.io/"));
 
         dispatch({
             type:"DISCONNECT_WALLET",
