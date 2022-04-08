@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@taquito/beacon-wallet": "^9.0.0",
+    "@taquito/beacon-wallet": "^11.2.0",
     "@taquito/ledger-signer": "^9.0.0",
-    "@taquito/taquito": "^9.0.0",
+    "@taquito/taquito": "^11.2.0",
     "@taquito/tzip12": "^9.1.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
