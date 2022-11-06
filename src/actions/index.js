@@ -17,8 +17,8 @@ export const connectWallet = ({wallet, Tezos}) => {
             if(!activeAccount){
                 await wallet.requestPermissions({
                 network: {
-                    type: NetworkType.HANGZHOUNET,
-                    rpcUrl: "https://hangzhounet.smartpy.io/"
+                    type: NetworkType.GHOSTNET,
+                    rpcUrl: "https://ghostnet.ecadinfra.com/"
                 }
                 });
             }
@@ -50,16 +50,14 @@ export const _walletConfig = (user) => {
 export const disconnectWallet = ({wallet, setTezos}) => {
     return async (dispatch) => {
 
-        setTezos(new TezosToolkit("https://hangzhounet.smartpy.io/"));
+        setTezos(new TezosToolkit("https://ghostnet.ecadinfra.com/"));
 
         dispatch({
             type:"DISCONNECT_WALLET",
         });
 
         if(wallet){
-            await wallet.client.removeAllAccounts();
-            await wallet.client.removeAllPeers();
-            await wallet.client.destroy();
+            await wallet.clearActiveAccount();
         }
       };
 }

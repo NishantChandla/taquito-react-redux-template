@@ -3,27 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@taquito/beacon-wallet": "^11.2.0",
-    "@taquito/ledger-signer": "^9.0.0",
-    "@taquito/taquito": "^11.2.0",
-    "@taquito/tzip12": "^9.1.1",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.4",
-    "react-scripts": "4.0.3",
-    "redux": "^4.1.0",
+    "@airgap/beacon-sdk": "^3.3.0",
+    "@taquito/beacon-wallet": "^14.0.0",
+    "@taquito/ledger-signer": "^14.0.0",
+    "@taquito/taquito": "^14.0.0",
+    "@taquito/tzip12": "^14.0.0",
+    "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.3.0",
-    "web-vitals": "^1.1.2"
+    "redux-thunk": "^2.4.2",
+    "web-vitals": "^3.0.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [
@@ -42,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "os-browserify": "^0.3.0",
+    "stream-browserify": "^3.0.0"
   }
 }

@@ -16,7 +16,7 @@ const App = () => {
     const selector = useSelector(state => state);
     const dispatch = useDispatch();
     const [Tezos, setTezos] = useState(
-        new TezosToolkit("https://hangzhounet.smartpy.io/")
+        new TezosToolkit("https://ghostnet.ecadinfra.com/")
     );
     const [wallet, setWallet] = useState(null);
 
@@ -24,7 +24,7 @@ const App = () => {
         (async () => {
             const wallet_instance = new BeaconWallet({
                 name: "Template",
-                preferredNetwork: NetworkType.HANGZHOUNET,
+                preferredNetwork: NetworkType.GHOSTNET,
                 colorMode: ColorMode.LIGHT,
                 disableDefaultEvents: false, // Disable all events / UI. This also disables the pairing alert.
                 eventHandlers: {

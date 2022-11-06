@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import App from "./components/App";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
@@ -9,14 +9,15 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import persistedReducers from "./reducers";
 
+const container = document.getElementById("root");
+const root = createRoot(container);
 
 const store = createStore(persistedReducers, applyMiddleware(thunk));
 
-ReactDOM.render(
+root.render(
 	<Provider store={store}>
 		<PersistGate loading={null} persistor={persistStore(store)}>
 			<App />
 		</PersistGate>
-	</Provider>,
-	document.querySelector("#root")
+	</Provider>
 );
